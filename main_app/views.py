@@ -10,7 +10,6 @@ toys = [
     Toy('Spider-Man Miles Morales', 'New York teen bitten by a genetically enhanced spider', 'Earth-1610'),
     Toy('Spider-Man Peter Parker', 'New York teen bitten by a genertically enhanced spider', 'Earth-616'),
     Toy('Spider-Man', 'New York teen bitting by a genetically enhanced spider!', 'Earth-1048')
-
 ]
 
 # define the home view
