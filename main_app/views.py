@@ -1,16 +1,7 @@
 from django.shortcuts import render
 from django.http import HttpResponse
+from .models import Toy
 
-class Toy:
-    def __init__(self, name, description, world):
-        self.name = name
-        self.description = description
-        self.world = world
-toys = [
-    Toy('Spider-Man Miles Morales', 'New York teen bitten by a genetically enhanced spider', 'Earth-1610'),
-    Toy('Spider-Man Peter Parker', 'New York teen bitten by a genertically enhanced spider', 'Earth-616'),
-    Toy('Spider-Man', 'New York teen bitting by a genetically enhanced spider!', 'Earth-1048')
-]
 
 # define the home view
 def home(request):
@@ -20,4 +11,5 @@ def about(request):
     return render(request, 'about.html')
 
 def toys_index(request):
+    toys = Toy.objects.all()
     return render(request, 'toys/index.html', {'toys': toys})
