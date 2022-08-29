@@ -13,3 +13,7 @@ def about(request):
 def toys_index(request):
     toys = Toy.objects.all()
     return render(request, 'toys/index.html', {'toys': toys})
+
+def toys_detail(request, toy_id):
+    toy = Toy.objects.get(id=toy_id)
+    return render(request, 'toys/detail.html', { 'toy': toy })
