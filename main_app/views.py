@@ -1,5 +1,6 @@
 from django.shortcuts import render
 from django.http import HttpResponse
+from django.views.generic.edit import CreateView
 from .models import Toy
 
 
@@ -17,3 +18,7 @@ def toys_index(request):
 def toys_detail(request, toy_id):
     toy = Toy.objects.get(id=toy_id)
     return render(request, 'toys/detail.html', { 'toy': toy })
+
+class ToyCreate(CreateView):
+    model = Toy
+    fields = '__all__'
