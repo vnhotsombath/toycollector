@@ -6,7 +6,7 @@ from .models import Toy
 
 # define the home view
 def home(request):
-    return HttpResponse('<h1>Welcome to the Toy Collector Page!</h1>')
+    return HttpResponse('<h1>Welcome to the Trifecta Toy Collector Page!</h1>')
 
 def about(request):
     return render(request, 'about.html')

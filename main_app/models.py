@@ -7,8 +7,8 @@ class Toy(models.Model):
     description = models.TextField(max_length=250)
     age = models.IntegerField()
 
-def get_absolute_url(self):
-    return reverse('detail', kwargs={'toy_id': self.id})
+    def get_absolute_url(self):
+        return reverse('detail', kwargs={'toy_id': self.id})
     
 
     
