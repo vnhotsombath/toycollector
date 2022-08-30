@@ -1,6 +1,6 @@
 from django.shortcuts import render
 from django.http import HttpResponse
-from django.views.generic.edit import CreateView
+from django.views.generic.edit import CreateView, UpdateView
 from .models import Toy
 
 
@@ -22,3 +22,7 @@ def toys_detail(request, toy_id):
 class ToyCreate(CreateView):
     model = Toy
     fields = '__all__'
+
+class ToyUpdate(UpdateView):
+    model = Toy
+    fields = ['description', 'age']
