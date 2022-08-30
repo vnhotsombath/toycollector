@@ -1,6 +1,6 @@
 from django.shortcuts import render
 from django.http import HttpResponse
-from django.views.generic.edit import CreateView, UpdateView
+from django.views.generic.edit import CreateView, UpdateView, DeleteView
 from .models import Toy
 
 
@@ -26,3 +26,7 @@ class ToyCreate(CreateView):
 class ToyUpdate(UpdateView):
     model = Toy
     fields = ['description', 'age']
+
+class ToyDelete(DeleteView):
+    model = Toy
+    success_url = '/toys/'
