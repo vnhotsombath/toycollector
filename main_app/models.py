@@ -6,7 +6,7 @@ class Ability(models.Model):
     description = models.CharField(max_length=100)
 
     def __str__(self):
-        return self.name
+        return self.description
 
     def get_absolute_url(self):
         return reverse('abilities_detail', kwargs={'pk': self.id})
