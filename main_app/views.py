@@ -21,6 +21,14 @@ def toys_detail(request, toy_id):
     ability_form = AbilityForm()
     return render(request, 'toys/detail.html', { 'toy': toy, 'piece_form': piece_form, 'ability_form': ability_form })
 
+def add_piece(request, toy_id):
+    form = PieceForm(request.POST)
+    if form.is_valid():
+        new_piece = form.save(commit=False)
+        new_piece.toy_id = toy_id
+        new_piece.save()
+    return redirect('detail', toy_id=toy_id)
+
 def add_ability(request, toy_id):
     form = AbilityForm(request.POST)
     if form.is_valid():

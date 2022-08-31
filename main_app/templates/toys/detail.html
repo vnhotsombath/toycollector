@@ -17,7 +17,7 @@
     </div>
 </div>
 <div class="col s6">
-    <form method="post">
+    <form action="{% url 'add_piece' toy.id %}" method="post">
         {% csrf_token %}
         {{ piece_form.as_p }}
         <input type="submit" class="btn" value="Add Pieces">
@@ -67,5 +67,8 @@
         setDefaultDate: true,
         autoClose: true
     });
+
+    const selectEl = document.getElementById('id_piece');
+    M.FormSelect.init(selectEl);
 </script>
 {% endblock %}
