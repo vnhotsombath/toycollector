@@ -1,5 +1,11 @@
 from django.forms import ModelForm
-from .models import Ability
+from .models import Piece, Ability
+
+class PieceForm(ModelForm):
+    class Meta:
+        model = Piece
+        fields = ['date', 'piece']
+
 
 class AbilityForm(ModelForm):
     class Meta:

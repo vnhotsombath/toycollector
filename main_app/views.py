@@ -2,7 +2,7 @@ from django.shortcuts import render, redirect
 from django.http import HttpResponse
 from django.views.generic.edit import CreateView, UpdateView, DeleteView
 from .models import Toy
-from .forms import AbilityForm
+from .forms import PieceForm, AbilityForm
 
 # define the home view
 def home(request):
@@ -17,8 +17,9 @@ def toys_index(request):
 
 def toys_detail(request, toy_id):
     toy = Toy.objects.get(id=toy_id)
+    piece_form = PieceForm()
     ability_form = AbilityForm()
-    return render(request, 'toys/detail.html', { 'toy': toy, 'ability_form': ability_form })
+    return render(request, 'toys/detail.html', { 'toy': toy, 'piece_form': piece_form, 'ability_form': ability_form })
 
 def add_ability(request, toy_id):
     form = AbilityForm(request.POST)
