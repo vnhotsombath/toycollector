@@ -17,12 +17,18 @@ PIECES = (
 )
 
 class Piece(models.Model):
+    date = models.DateField(null=True)
     piece = models.CharField(
-        max_length=10,
+        max_length=1,
         choices = PIECES,
         default = PIECES [0][0]
         )
-    toy = models.ForeignKey(Toy, on_delete = models.CASCADE)
+    toy = models.ForeignKey(Toy, on_delete=models.CASCADE)
+
+    def __str__(self):
+        return f"{self.get_piece_display()} on {self.date}"
+    class Meta:
+        ordering = ['-date']
 
 class Ability(models.Model):
     description = models.CharField(max_length=100)    
