@@ -10,7 +10,7 @@ class Toy(models.Model):
     def get_absolute_url(self):
         return reverse('detail', kwargs={'toy_id': self.id})
 
-class Abilities(models.Model):
+class Ability(models.Model):
     description = models.CharField(max_length=100)    
 
     toy = models.ForeignKey(Toy, on_delete=models.CASCADE)
