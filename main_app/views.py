@@ -35,27 +35,9 @@ def add_ability(request, toy_id):
     form = AbilityForm(request.POST)
     if form.is_valid():
         new_ability = form.save(commit=False)
-        new_ability = toy_id = toy_id
+        new_ability.toy_id = toy_id
         new_ability.save()
     return redirect('detail', toy_id=toy_id)
-
-class AbilityList(ListView):
-    model = Ability
-
-class AbilityDetail(DetailView):
-    model = Ability 
-
-class AbilityCreate(CreateView):
-    model = Ability
-    fields = '__all__'
-
-class AbilityUpdate(UpdateView):
-    model = Ability
-    fields = ['description']
-
-class AbilityDelete(DeleteView):
-    model = Ability
-    success_url = '/toys/'
 
 class ToyCreate(CreateView):
     model = Toy

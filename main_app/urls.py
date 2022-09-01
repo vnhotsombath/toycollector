@@ -11,9 +11,4 @@ urlpatterns = [
     path('toys/<int:pk>/delete/', views.ToyDelete.as_view(), name='toys_delete'),
     path('toys/<int:toy_id>/add_piece/', views.add_piece, name='add_piece'),
     path('toys/<int:toy_id>/add_ability/', views.add_ability, name='add_ability'),
-    path('abilities/', views.AbilityList.as_view(), name='abilities_index'),
-    path('abilities/<int:pk>/', views.AbilityDetail.as_view(), name='abilities_detail'),
-    path('abilities/create/', views.AbilityCreate.as_view(), name='abilities_create'),
-    path('abilities/<int:pk>/upate/', views.AbilityUpdate.as_view(), name='abilities_update'),
-    path('abilities/<int:pk>/delete/', views.AbilityDelete.as_view(), name='abilities_delete'),
 ]
