@@ -1,12 +1,13 @@
 from django.shortcuts import render, redirect
 from django.http import HttpResponse
 from django.views.generic.edit import CreateView, UpdateView, DeleteView
-from .models import Toy
+from django.views.generic import ListView, DetailView
+from .models import Toy, Ability
 from .forms import PieceForm, AbilityForm
 
 # define the home view
 def home(request):
-    return HttpResponse('<h1>Welcome to the Trifecta Toy Collector Page!</h1>')
+    return render(request, 'home.html')
 
 def about(request):
     return render(request, 'about.html')
@@ -18,8 +19,8 @@ def toys_index(request):
 def toys_detail(request, toy_id):
     toy = Toy.objects.get(id=toy_id)
     piece_form = PieceForm()
-    ability_form = AbilityForm()
-    return render(request, 'toys/detail.html', { 'toy': toy, 'piece_form': piece_form, 'ability_form': ability_form })
+  
+    return render(request, 'toys/detail.html', { 'toy': toy, 'piece_form': piece_form })
 
 def add_piece(request, toy_id):
     form = PieceForm(request.POST)
@@ -36,6 +37,24 @@ def add_ability(request, toy_id):
         new_ability = toy_id = toy_id
         new_ability.save()
     return redirect('detail', toy_id=toy_id)
+
+class AbilityList(ListView):
+    model = Ability
+
+class AbilityDetail(DetailView):
+    model = Ability 
+
+class AbilityCreate(CreateView):
+    model = Ability
+    fields = '__all__'
+
+class AbilityUpdate(UpdateView):
+    model = Ability
+    fields = ['description']
+
+class AbilityDelete(DeleteView):
+    model = Ability
+    success_url = '/toys/'
 
 class ToyCreate(CreateView):
     model = Toy

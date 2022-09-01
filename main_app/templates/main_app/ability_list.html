@@ -1,0 +1,14 @@
+{% extends 'base.html' %}
+{% block content %}
+
+<h1>Ability List</h1>
+
+{% for ability in ability_list %}
+    <a href="{% url 'abilities_detail' ability.id %}">
+        <div class="card">
+            <div class="card-title">{{ ability.description }}</div>
+        </div>
+    </a>
+{% endfor %}
+
+{% endblock %}
