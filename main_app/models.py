@@ -2,23 +2,30 @@ from django.db import models
 from django.urls import reverse
 
 # Create your models here.
-class Ability(models.Model):
-    description = models.CharField(max_length=100)
-
-    def __str__(self):
-        return self.description
-
-    def get_absolute_url(self):
-        return reverse('abilities_detail', kwargs={'pk': self.id})
-        
 class Toy(models.Model):
     name = models.CharField(max_length=100)
     description = models.TextField(max_length=250)
     age = models.IntegerField()
-    abilities = models.ManyToManyField(Ability)
+    
+    
 
     def get_absolute_url(self):
         return reverse('detail', kwargs={'toy_id': self.id})
+
+class Ability(models.Model):
+    date = models.DateField(null=True)
+    description = models.CharField(max_length=100)
+
+    toy = models.ForeignKey(Toy, on_delete=models.CASCADE, null=True) 
+
+    def __str__(self):
+        return self.description
+    
+    class Meta:
+        ordering = ['-date']
+
+    def get_absolute_url(self):
+        return reverse('abilities_detail', kwargs={'pk': self.id})
 
 PIECES = (
     ('W', 'Weapon'),

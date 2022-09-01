@@ -6,7 +6,6 @@ class PieceForm(ModelForm):
         model = Piece
         fields = ['date', 'piece']
 
-
 class AbilityForm(ModelForm):
     class Meta:
         model = Ability

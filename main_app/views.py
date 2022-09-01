@@ -19,8 +19,9 @@ def toys_index(request):
 def toys_detail(request, toy_id):
     toy = Toy.objects.get(id=toy_id)
     piece_form = PieceForm()
+    ability_form = AbilityForm()
   
-    return render(request, 'toys/detail.html', { 'toy': toy, 'piece_form': piece_form })
+    return render(request, 'toys/detail.html', { 'toy': toy, 'piece_form': piece_form, 'ability_form': ability_form })
 
 def add_piece(request, toy_id):
     form = PieceForm(request.POST)
